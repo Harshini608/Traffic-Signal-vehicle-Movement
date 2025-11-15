@@ -7,8 +7,8 @@ public class RealisticTrafficSimulator extends JPanel {
     private String light = "GREEN";     
     private int timerCount = 0;          
 
-    private final int SIGNAL_X = 350;    // traffic signal position
-    private final int CAR_STOP_X = 300;  // where car should stop BEFORE reaching signal
+    private final int SIGNAL_X = 350;  
+    private final int CAR_STOP_X = 300;  
 
     public RealisticTrafficSimulator() {
         Timer t = new Timer(30, e -> update());
@@ -18,7 +18,7 @@ public class RealisticTrafficSimulator extends JPanel {
     private void update() {
         timerCount++;
 
-        // SIMPLE light cycle – easy to understand
+        
         if (timerCount == 200) light = "YELLOW";
         if (timerCount == 260) light = "RED";
         if (timerCount == 380) {
@@ -26,7 +26,7 @@ public class RealisticTrafficSimulator extends JPanel {
             timerCount = 0;
         }
 
-        // Car stops BEFORE reaching signal
+        
         if (carX + 80 < CAR_STOP_X) { 
             carX += 3; 
         } else {
@@ -36,7 +36,7 @@ public class RealisticTrafficSimulator extends JPanel {
             }
         }
 
-        // Loop car back
+        
         if (carX > 700) carX = -80;
 
         repaint();
@@ -65,7 +65,7 @@ public class RealisticTrafficSimulator extends JPanel {
 
     private void drawTrafficLight(Graphics g) {
 
-        // Simple signal placement
+        
         int x = SIGNAL_X;
 
         g.setColor(Color.BLACK);
@@ -107,3 +107,4 @@ public class RealisticTrafficSimulator extends JPanel {
         frame.setVisible(true);
     }
 }
+
